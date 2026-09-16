@@ -27,7 +27,7 @@
 
 ## Ссылка на опубликованный проект
 
-GitHub Pages: https://maksgitm.github.io/kr1-html-css-shop
+GitHub Pages: https://maksgitm.github.io/kr1-html-css-shop/kr1-html-css-shop/
 
 ## Автор
 
