@@ -82,3 +82,69 @@ footer {
 .product-card h3 {
   margin-top: 0;
 }
+
+.order-dialog {
+  width: min(100% - 32px, 560px);
+  padding: 24px;
+  border: none;
+  border-radius: 12px;
+}
+
+.order-dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+  font: inherit;
+}
+
+.form-field input[type="checkbox"] {
+  width: auto;
+}
+
+.form-field small {
+  display: block;
+  margin-top: 4px;
+  color: #666666;
+}
+
+.form-field input:focus-visible,
+.form-field select:focus-visible,
+.form-field textarea:focus-visible,
+.form-actions button:focus-visible {
+  outline: 2px solid #0057b8;
+  outline-offset: 2px;
+}
+
+[aria-invalid="true"] {
+  border-color: #b00020;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.success-message {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 16px;
+  border-left: 4px solid #168a2f;
+  background-color: #eefaf0;
+}
