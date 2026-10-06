@@ -242,3 +242,44 @@ a:focus-visible {
   background-color: var(--color-success-bg);
 }
 
+/* Хлебные крошки */
+.breadcrumbs {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-md);
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.breadcrumbs a {
+  color: var(--color-primary);
+}
+
+.breadcrumbs span::before {
+  content: " / ";
+  color: var(--color-muted);
+}
+
+/* Плавная прокуртка */
+html {
+  scroll-behavior: smooth;
+}
+
+/* подсветка для якоря */
+:target {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 4px;
+}
+
+.site-nav__list {
+  display: flex;       /* Включаем Flexbox для списка */
+  list-style: none;    /* Убираем черные точки (маркеры) */
+  margin: 0;
+  padding: 0;
+  gap: 15px;
+}
+
+nav {
+  display: flex;
+  align-items: center; /* Выравниваем по вертикали */
+  gap: 20px;           /* Отступ между логотипом и списком меню */
+}
