@@ -60,8 +60,26 @@ footer {
 }
 
 header {
-  background-color: var(--color-surface);
+position: sticky;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
+
+
+.stuff {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-xl);
+}
+
 
 footer {
   background-color: var(--color-surface);
