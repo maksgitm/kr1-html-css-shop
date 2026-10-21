@@ -6,6 +6,9 @@
   <meta name="description" content="Контактная информация учебного интернет-магазина.">
   <title>Контакты</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/extras.css">
+  <script src="js/products.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -13,50 +16,48 @@
       <a class="site-header__logo" href="index.html">ShopProject</a>
 
       <nav class="site-nav" aria-label="Основная навигация">
-      <ul class="site-nav__list">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="catalog.html">Каталог</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-        <li><a href="index.html#advantages">Преимущества</a></li>
-        <li><a href="index.html#popular">Популярные товары</a></li>
-        <li><a href="index.html#contacts">Обратная связь</a></li>
-      </ul>
-    </nav>
+        <ul class="site-nav__list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="index.html#advantages">Преимущества</a></li>
+          <li><a href="index.html#popular">Популярные товары</a></li>
+          <li><a href="index.html#faq">Вопросы и ответы</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary site-header__cta" href="contacts.html?order=1" data-open-order>Оставить заявку</a>
     </div>
   </header>
-
-
 
   <main>
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
-      <span class="breadcrumbs__current">Контакты</span>
+      <span class="breadcrumbs__current" aria-current="page">Контакты</span>
     </nav>
-
 
     <section class="section">
       <h1>Контакты</h1>
-      <p>
-        Здесь размещается контактная информация учебного интернет-магазина.
-      </p>
+      <p>Здесь размещается контактная информация учебного интернет-магазина.</p>
 
       <ul>
-        <li>Телефон: +7 (900) 000-00-00</li>
-        <li>E-mail: info@example.com</li>
+        <li>Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a></li>
+        <li>E-mail: <a href="mailto:info@example.com">info@example.com</a></li>
         <li>Адрес: г. Москва, учебный проект</li>
+        <li>Режим работы: пн–пт, 9:00–18:00</li>
       </ul>
     </section>
 
     <section class="section" id="feedback">
       <h2>Обратная связь</h2>
       <p>
-        Для отправки заявки используйте форму в модальном окне на главной странице.
+        Форма заявки открывается в модальном окне прямо на этой странице.
+        Она доступна с любой страницы сайта: из шапки, из карточек товаров и из таблицы тарифов.
       </p>
-      <a class="button" href="index.html#contacts">Перейти к форме</a>
+      <button class="button" type="button" data-open-order>Открыть форму заявки</button>
     </section>
   </main>
 
-  <footer>
+  <footer id="contacts">
     <p>&copy; 2026 Учебный проект. Все права защищены.</p>
     <p>Дисциплина: Фронтенд и бэкенд разработка</p>
   </footer>

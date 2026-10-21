@@ -3,9 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Каталог товаров учебного интернет-магазина.">
+  <meta name="description" content="Каталог товаров и услуг учебного интернет-магазина.">
   <title>Каталог товаров</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/extras.css">
+  <script src="js/products.js" defer></script>
+  <script src="js/main.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -13,122 +16,155 @@
       <a class="site-header__logo" href="index.html">ShopProject</a>
 
       <nav class="site-nav" aria-label="Основная навигация">
-      <ul class="site-nav__list">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="catalog.html">Каталог</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-        <li><a href="index.html#advantages">Преимущества</a></li>
-        <li><a href="index.html#popular">Популярные товары</a></li>
-        <li><a href="index.html#contacts">Обратная связь</a></li>
-      </ul>
-    </nav>
+        <ul class="site-nav__list">
+          <li><a href="index.html">Главная</a></li>
+          <li><a href="catalog.html">Каталог</a></li>
+          <li><a href="contacts.html">Контакты</a></li>
+          <li><a href="index.html#advantages">Преимущества</a></li>
+          <li><a href="index.html#popular">Популярные товары</a></li>
+          <li><a href="index.html#faq">Вопросы и ответы</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary site-header__cta" href="contacts.html?order=1" data-open-order>Оставить заявку</a>
     </div>
   </header>
-
 
   <main>
     <nav class="breadcrumbs" aria-label="Хлебные крошки">
       <a class="breadcrumbs__link" href="index.html">Главная</a>
-      <span class="breadcrumbs__current">Каталог</span>
+      <span class="breadcrumbs__current" aria-current="page">Каталог</span>
     </nav>
 
-
     <section class="section">
-      <h1>Каталог товаров</h1>
+      <h1>Каталог товаров и услуг</h1>
       <p>
-        На этой странице представлен учебный каталог товаров.
-        В дальнейшем здесь будут добавлены фильтры, сортировка и более
-        подробные карточки.
+        Гаджеты, аксессуары и услуги по настройке техники. Нажмите на карточку,
+        чтобы увидеть подробное описание, характеристики и оформить заявку.
+        Понравившиеся позиции можно добавить в избранное кнопкой с сердечком.
       </p>
     </section>
 
-<section class="catalog-layout">
-  <aside class="catalog-filters">
-    <h2>Фильтры</h2>
+    <section class="catalog-layout">
+      <aside class="catalog-filters">
+        <h2 class="catalog-filters__title">Фильтры</h2>
 
-    <form class="filters-form" action="#" method="get">
-      <fieldset>
-        <legend>Категория</legend>
+        <form class="filters-form" action="#" method="get" id="catalog-filters-form">
+          <fieldset class="filters-form__section">
+            <legend class="filters-form__legend">Сортировка</legend>
+            <div class="filters-form__select-wrapper">
+              <label class="visually-hidden" for="filter-sort">Порядок сортировки</label>
+              <select class="filters-form__select" name="sort" id="filter-sort">
+                <option value="popular">По популярности</option>
+                <option value="price-asc">Сначала дешевле</option>
+                <option value="price-desc">Сначала дороже</option>
+                <option value="new">По новизне</option>
+              </select>
+            </div>
+          </fieldset>
 
-        <label>
-          <input type="checkbox" name="category" value="all">
-          Все товары
-        </label>
+          <fieldset class="filters-form__section">
+            <legend class="filters-form__legend">Категория</legend>
+            <ul class="filters-form__list">
+              <li class="filters-form__item">
+                <label class="filters-form__checkbox-label">
+                  <input class="filters-form__checkbox" type="checkbox" name="category" value="popular" id="cat-popular">
+                  <span>Популярные</span>
+                </label>
+              </li>
+              <li class="filters-form__item">
+                <label class="filters-form__checkbox-label">
+                  <input class="filters-form__checkbox" type="checkbox" name="category" value="new" id="cat-new">
+                  <span>Новинки</span>
+                </label>
+              </li>
+              <li class="filters-form__item">
+                <label class="filters-form__checkbox-label">
+                  <input class="filters-form__checkbox" type="checkbox" name="category" value="sale" id="cat-sale">
+                  <span>Со скидкой</span>
+                </label>
+              </li>
+            </ul>
+          </fieldset>
 
-        <label>
-          <input type="checkbox" name="category" value="popular">
-          Популярные
-        </label>
+          <fieldset class="filters-form__section">
+            <legend class="filters-form__legend">Цена, ₽</legend>
+            <div class="filters-form__price-range">
+              <div class="filters-form__field">
+                <label class="visually-hidden" for="price-from">Цена от</label>
+                <input class="filters-form__input" id="price-from" name="price-from" type="number" min="0" placeholder="от 0">
+              </div>
+              <span class="filters-form__price-separator" aria-hidden="true">&mdash;</span>
+              <div class="filters-form__field">
+                <label class="visually-hidden" for="price-to">Цена до</label>
+                <input class="filters-form__input" id="price-to" name="price-to" type="number" min="0" placeholder="до 8000">
+              </div>
+            </div>
+          </fieldset>
 
-        <label>
-          <input type="checkbox" name="category" value="new">
-          Новинки
-        </label>
-      </fieldset>
+          <div class="filters-form__actions">
+            <button class="btn btn--primary" type="submit">Применить</button>
+            <button class="btn btn--secondary" type="reset" id="reset-filters">Сбросить</button>
+          </div>
+        </form>
+      </aside>
 
-      <fieldset>
-        <legend>Цена</legend>
+      <section class="catalog-products" aria-labelledby="catalog-title">
+        <div class="catalog-products__header">
+          <h2 id="catalog-title">Все товары и услуги</h2>
+          <span class="catalog-products__count" id="catalog-count" aria-live="polite"></span>
+        </div>
+        <!-- Карточки рендерит js/main.js из js/products.js -->
+        <div class="products-grid" data-products="catalog"></div>
+        <p class="catalog-empty" id="catalog-empty" hidden>
+          По выбранным фильтрам ничего не найдено. Измените диапазон цен или нажмите «Сбросить».
+        </p>
+      </section>
+    </section>
 
-        <label for="price-from">От</label>
-        <input id="price-from" name="price-from" type="number" min="0" placeholder="0">
-
-        <label for="price-to">До</label>
-        <input id="price-to" name="price-to" type="number" min="0" placeholder="5000">
-      </fieldset>
-
-      <button class="button" type="submit">Применить</button>
-    </form>
-  </aside>
-
-  <section class="catalog-products">
-    <h2>Список товаров</h2>
-
-    <div class="products-grid">
-        <article class="product-card">
-          <h3>Товар 1</h3>
-          <p>Краткое описание учебного товара.</p>
-          <p>Цена: 1000 руб.</p>
-          <a class="button" href="index.html#popular">Подробнее</a>
-        </article>
-
-        <article class="product-card">
-          <h3>Товар 2</h3>
-          <p>Краткое описание учебного товара.</p>
-          <p>Цена: 1500 руб.</p>
-          <a class="button" href="index.html#popular">Подробнее</a>
-        </article>
-
-        <article class="product-card">
-          <h3>Товар 3</h3>
-          <p>Краткое описание учебного товара.</p>
-          <p>Цена: 2000 руб.</p>
-          <a class="button" href="index.html#popular">Подробнее</a>
-        </article>
-
-        <article class="product-card">
-          <h3>Товар 4</h3>
-          <p>Краткое описание учебного товара.</p>
-          <p>Цена: 2000 руб.</p>
-          <a class="button" href="index.html#popular">Подробнее</a>
-        </article>
-
-      <article class="product-card">
-          <h3>Товар 5</h3>
-          <p>Краткое описание учебного товара.</p>
-          <p>Цена: 5000 руб.</p>
-          <a class="button" href="index.html#popular">Подробнее</a>
-        </article>
-
-    </div>
-  </section>
-</section>
-
-
+    <section class="section" id="tariffs" aria-labelledby="tariffs-title">
+      <h2 id="tariffs-title">Тарифы на установку и поддержку</h2>
+      <p>
+        Выберите пакет услуг для купленной техники. Все тарифы включают консультацию
+        по выбору оборудования, а в старших пакетах добавляются выезды мастера и приоритетная помощь.
+      </p>
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="tariffs-caption">
+        <table class="specs-table">
+          <caption id="tariffs-caption">Сравнение тарифов</caption>
+          <thead>
+            <tr>
+              <th scope="col">Возможности</th>
+              <th scope="col">Базовый<span class="tariff-price">2 990 ₽</span></th>
+              <th scope="col" class="is-featured">Стандарт<span class="tariff-price">5 000 ₽</span><span class="tariff-badge">Рекомендуем</span></th>
+              <th scope="col">Премиум<span class="tariff-price">9 900 ₽</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Срок поддержки</th><td>1 месяц</td><td class="is-featured">6 месяцев</td><td>12 месяцев</td></tr>
+            <tr><th scope="row">Подключаемых устройств</th><td>до 5</td><td class="is-featured">до 15</td><td>без ограничений</td></tr>
+            <tr><th scope="row">Выезд мастера</th><td>1 выезд</td><td class="is-featured">2 выезда</td><td>4 выезда</td></tr>
+            <tr><th scope="row">Время ответа в чате</th><td>до 24 часов</td><td class="is-featured">до 4 часов</td><td>до 1 часа</td></tr>
+            <tr><th scope="row">Настройка голосовых ассистентов</th><td><span class="no" aria-label="Нет">—</span></td><td class="is-featured"><span class="yes" aria-label="Да">✓</span></td><td><span class="yes" aria-label="Да">✓</span></td></tr>
+            <tr><th scope="row">Удалённая диагностика</th><td><span class="no" aria-label="Нет">—</span></td><td class="is-featured"><span class="yes" aria-label="Да">✓</span></td><td><span class="yes" aria-label="Да">✓</span></td></tr>
+            <tr><th scope="row">Персональный менеджер</th><td><span class="no" aria-label="Нет">—</span></td><td class="is-featured"><span class="no" aria-label="Нет">—</span></td><td><span class="yes" aria-label="Да">✓</span></td></tr>
+            <tr><th scope="row">Скидка на аксессуары</th><td>—</td><td class="is-featured">5%</td><td>10%</td></tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th scope="row">Оформить</th>
+              <td><button type="button" class="btn btn--secondary" data-open-order data-plan="Базовый">Выбрать</button></td>
+              <td class="is-featured"><button type="button" class="btn btn--primary" data-open-order data-plan="Стандарт">Выбрать</button></td>
+              <td><button type="button" class="btn btn--secondary" data-open-order data-plan="Премиум">Выбрать</button></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </section>
   </main>
 
-  <footer>
+  <footer id="contacts">
     <p>&copy; 2026 Учебный проект. Все права защищены.</p>
     <p>Дисциплина: Фронтенд и бэкенд разработка</p>
   </footer>
 </body>
 </html>
+я
