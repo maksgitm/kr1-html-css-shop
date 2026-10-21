@@ -115,11 +115,6 @@ position: sticky;
   outline-offset: 3px;
 }
 
-.site-nav__link--active {
-  color: var(--color-white);
-  background-color: var(--color-primary);
-}
-
 
 .stuff {
   display: flex;
@@ -480,41 +475,412 @@ nav {
   gap: var(--space-lg);
 }
 
+/* Вспомогательный класс для скрытия label без потери доступности для скринридеров */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .catalog-filters {
-  grid-area: filters;
-  padding: var(--space-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background-color: var(--color-surface);
+  background-color: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+  font-family: system-ui, sans-serif;
 }
 
-
-
-.filters-form {
-  display: grid;
-  gap: var(--space-md);
+.catalog-filters__title {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
 }
 
-.filters-form fieldset {
+.filters-form__section {
+  border: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.filters-form__legend {
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+/* Стили для списков чекбоксов */
+.filters-form__list {
+  list-style: none;
+  padding: 0;
   margin: 0;
-  padding: var(--space-md);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
 }
 
-.filters-form legend {
-  font-weight: 700;
+.filters-form__item {
+  margin-bottom: 10px;
 }
 
-.filters-form label {
-  display: block;
-  margin-bottom: var(--space-sm);
+.filters-form__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.filters-form input[type="number"] {
+.filters-form__checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}
+
+/* Поле выбора сортировки */
+.filters-form__select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+}
+
+/* Блок цены в одну строку */
+.filters-form__price-range {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.filters-form__field {
+  flex: 1;
+}
+
+.filters-form__input {
   width: 100%;
   padding: 8px 10px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-sm);
-  font: inherit;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.filters-form__price-separator {
+  color: #999;
+}
+
+/* Кнопки действия */
+.filters-form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  width: 100%;
+}
+
+.btn--primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background-color: #0056b3;
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: #666;
+  border: 1px solid #ccc;
+}
+
+.btn--secondary:hover {
+  background-color: #eaeaea;
+  color: #333;
+}
+
+
+.faq-container {
+  max-width: 600px;
+  margin: 20px auto;
+  font-family: sans-serif;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  font-weight: bold;
+  padding: 15px 0;
+  cursor: pointer;
+  list-style: none; /* Убирает стандартный маркер браузера */
+}
+
+.faq-question::-webkit-details-marker {
+  display: none; /* Убирает стрелочку в Safari */
+}
+
+.faq-answer {
+  padding-bottom: 15px;
+  color: #555;
+}
+
+
+:root {
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --error-color: #dc3545;
+  --text-color: #333;
+  --border-color: #ccc;
+}
+
+/* Модальное окно <dialog> */
+.order-dialog {
+  border: none;
+  border-radius: 8px;
+  padding: 30px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  font-family: system-ui, sans-serif;
+  color: var(--text-color);
+  box-sizing: border-box;
+  position: relative;
+
+  /* Эффект анимации при открытии */
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease, display 0.3s ease allow-discrete;
+}
+
+.order-dialog[open] {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Стилизация заднего фона (бэкдропа) */
+.order-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.3s ease, display 0.3s ease allow-discrete;
+}
+
+.order-dialog[open]::backdrop {
+  opacity: 1;
+}
+
+/* Кнопка-крестик */
+.order-dialog__close-icon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #999;
+  line-height: 1;
+}
+.order-dialog__close-icon:hover { color: var(--text-color); }
+
+.order-dialog__title {
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 24px;
+}
+
+/* Поля формы */
+.order-form__field {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.order-form__field--checkbox {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.order-form__label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.order-form__input,
+.order-form__select,
+.order-form__textarea {
+  padding: 10px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.order-form__input:focus,
+.order-form__select:focus,
+.order-form__textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Состояния ошибок */
+.order-form__field--invalid .order-form__input,
+.order-form__field--invalid .order-form__select {
+  border-color: var(--error-color);
+}
+
+.order-form__error {
+  color: var(--error-color);
+  font-size: 12px;
+  margin-top: 4px;
+  min-height: 16px;
+}
+
+.order-form__hint {
+  color: #666;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Кнопки */
+.order-form__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn--primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+.btn--primary:hover { background-color: var(--primary-hover); }
+
+.btn--secondary {
+  background-color: #e4e6eb;
+  color: var(--text-color);
+}
+.btn--secondary:hover { background-color: #d8dadf; }
+
+/* Уведомление об успехе */
+.success-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #28a745;
+  color: white;
+  padding: 15px 25px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  animation: slideIn 0.3s ease forwards;
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+
+.order-dialog__title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: 24px;
+  color: #333;
+}
+
+.order-dialog__product-desc {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.order-dialog__product-price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000;
+  margin-bottom: 25px;
+}
+
+.order-dialog__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+/* Убедитесь, что у карточки включен flex-режим и задана одинаковая высота */
+.product-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  position: relative;
+
+  display: flex;
+  flex-direction: column; /* Выстраиваем элементы карточки вертикально */
+  height: 100%;           /* Делает все карточки в ряду одной высоты */
+  box-sizing: border-box;
+}
+
+/* Короткое описание должно занимать все доступное пространство, */
+/* чтобы подтолкнуть футер к нижнему краю */
+.product-card__short-desc {
+  font-size: 14px;
+  color: #666;
+  margin: 0 0 16px 0;
+  line-height: 1.4;
+  flex-grow: 1; /* ВАЖНО: заставляет блок растягиваться */
+}
+
+/* ИСПРАВЛЕНИЕ: Контейнер для цены и кнопки */
+.product-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: auto; /* ВАЖНО: намертво прижимает строку к низу карточки */
+  padding-top: 12px; /* Легкий отступ сверху от текста */
+}
+
+/* Стили для цены */
+.product-card__price {
+  font-size: 18px;
+  font-weight: bold;
+  color: #111;
+  white-space: nowrap; /* Чтобы цена не переносилась на новую строку */
 }

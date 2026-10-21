@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Учебный интернет-магазин: гаджеты, аксессуары и услуги по настройке техники.">
   <title>Главная</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/extras.css">
+  <script src="js/products.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
 <body>
@@ -12,35 +15,29 @@
     <div class="site-header__inner">
       <a class="site-header__logo" href="index.html">ShopProject</a>
 
-    <nav class="site-nav" aria-label="Основная навигация">
-      <ul class="site-nav__list">
-        <li><a href="index.html">Главная</a></li>
-        <li><a href="catalog.html">Каталог</a></li>
-        <li><a href="contacts.html">Контакты</a></li>
-        <li><a href="index.html#advantages">Преимущества</a></li>
-        <li><a href="index.html#popular">Популярные товары</a></li>
-        <li><a href="index.html#contacts">Обратная связь</a></li>
-      </ul>
-    </nav>
-
-  </div>
+      <nav class="site-nav" aria-label="Основная навигация">
+        <ul class="site-nav__list">
+          <li class="site-nav__item"><a class="site-nav__link" href="index.html">Главная</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="catalog.html">Каталог</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="contacts.html">Контакты</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#advantages">Преимущества</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#popular">Популярные товары</a></li>
+          <li class="site-nav__item"><a class="site-nav__link" href="#faq">Вопросы и ответы</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--primary site-header__cta" href="contacts.html?order=1" data-open-order>Оставить заявку</a>
+    </div>
   </header>
 
-
   <main>
-<!--    <nav class="breadcrumbs" aria-label="Хлебные крошки">-->
-<!--      <a class="breadcrumbs__link" href="index.html">Главная</a>-->
-<!--      <span class="breadcrumbs__current">Каталог</span>-->
-<!--    </nav>-->
-
     <section class="hero">
       <h1>Учебный интернет-магазин</h1>
       <p>
-        Это стартовая страница учебного frontend-проекта.
-        В дальнейшем на её основе будет разработан многостраничный сайт
-        интернет-магазина или каталога услуг.
+        Это стартовая страница учебного frontend-проекта: каталог гаджетов и услуг,
+        подробные карточки, тарифы и форма заявки, которая открывается с любой страницы сайта.
       </p>
       <a class="button" href="#popular">Перейти к товарам</a>
+      <a class="button" href="catalog.html">Весь каталог</a>
     </section>
 
     <section class="section" id="advantages">
@@ -55,83 +52,90 @@
 
     <section class="section" id="popular">
       <h2>Популярные товары</h2>
-    <div class="products-grid">
-      <article class="product-card product-card--featured">
-        <h3 class="product-card__title">Товар 1</h3>
-        <p class="product-card__description">Краткое описание учебного товара.</p>
-        <p class="product-card__price">Цена: 1000 руб.</p>
-        <button
-          class="button product-card__button"
-          type="button"
-          data-product="Товар 1"
-        >
-          Заказать
-        </button>
+      <!-- Карточки рендерит js/main.js из js/products.js -->
+      <div class="products-grid" data-products="popular" data-limit="4"></div>
+      <p><a class="button" href="catalog.html">Смотреть весь каталог</a></p>
 
-      </article>
-      <article class="product-card product-card--featured">
-        <h3 class="product-card__title">Товар 2</h3>
-        <p class="product-card__description">Краткое описание учебного товара.</p>
-        <p class="product-card__price">Цена: 1000 руб.</p>
-        <button
-          class="button product-card__button"
-          type="button"
-          data-product="Товар 1"
-        >
-          Заказать
-        </button>
+    </section>
 
-      </article>
-      <article class="product-card product-card--featured">
-        <h3 class="product-card__title">Товар 3</h3>
-        <p class="product-card__description">Краткое описание учебного товара.</p>
-        <p class="product-card__price">Цена: 1000 руб.</p>
-        <button
-          class="button product-card__button"
-          type="button"
-          data-product="Товар 1"
-        >
-          Заказать
-        </button>
+    <section class="faq-container" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Часто задаваемые вопросы</h2>
 
-      </article>
-      <article class="product-card product-card--featured">
-        <h3 class="product-card__title">Товар 4</h3>
-        <p class="product-card__description">Краткое описание учебного товара.</p>
-        <p class="product-card__price">Цена: 1000 руб.</p>
-        <button
-          class="button product-card__button"
-          type="button"
-          data-product="Товар 1"
-        >
-          Заказать
-        </button>
-      </article>
+      <details class="faq-item">
+        <summary class="faq-question">Как сделать заказ?</summary>
+        <div class="faq-answer">
+          <p>Выберите товар в каталоге и нажмите на его карточку или кнопку «Подробнее». В открывшемся окне вы увидите полное описание, характеристики и цену. Затем нажмите «Заказать этот товар», укажите количество, имя, e-mail и телефон, выберите тему заявки и отправьте форму.</p>
+          <p>Менеджер свяжется с вами в течение рабочего дня, уточнит детали и согласует способ получения. Оформить заявку можно и без выбора товара — кнопка «Оставить заявку» есть в шапке каждой страницы.</p>
+        </div>
+      </details>
 
-      <article class="product-card product-card--featured">
-        <h3 class="product-card__title">Товар 5</h3>
-        <p class="product-card__description">Краткое описание учебного товара.</p>
-        <p class="product-card__price">Цена: 1700 руб.</p>
-        <button
-          class="button product-card__button"
-          type="button"
-          data-product="Товар 5"
-        >
-          Заказать
-        </button>
-      </article>
-    </div>
+      <details class="faq-item">
+        <summary class="faq-question">Какие есть способы оплаты?</summary>
+        <div class="faq-answer">
+          <p>Мы принимаем банковские карты Visa, Mastercard и «Мир», оплату по счёту для организаций и наличные при получении заказа.</p>
+          <ul>
+            <li>Картой — онлайн по ссылке от менеджера или курьеру через терминал.</li>
+            <li>По счёту — для юридических лиц и ИП, закрывающие документы отправляются вместе с заказом.</li>
+            <li>Наличными — при получении в пункте выдачи или курьеру.</li>
+          </ul>
+          <p>Услуги (настройка, техподдержка) оплачиваются после согласования объёма работ, до начала выезда мастера.</p>
+        </div>
+      </details>
 
+      <details class="faq-item">
+        <summary class="faq-question">Как работает доставка и сколько она стоит?</summary>
+        <div class="faq-answer">
+          <p>По Москве и Московской области доставляем курьером на следующий рабочий день после подтверждения заказа. Стоимость — 300 ₽, а при заказе от 5 000 ₽ доставка бесплатная. В другие регионы отправляем транспортными компаниями, срок — от 2 до 7 дней в зависимости от удалённости.</p>
+          <p>Перед отправкой мы проверяем комплектность и работоспособность устройства, упаковываем его в защитную коробку и присылаем трек-номер на e-mail. Самовывоз из пункта выдачи в Москве бесплатный.</p>
+        </div>
+      </details>
 
+      <details class="faq-item">
+        <summary class="faq-question">Можно ли вернуть или обменять товар?</summary>
+        <div class="faq-answer">
+          <p>Да. Вы можете вернуть товар надлежащего качества в течение 14 дней со дня получения, если он не был в использовании, сохранены упаковка, комплектация и товарный вид. Деньги возвращаются тем же способом, которым вы платили, в течение 5–10 рабочих дней после проверки возврата.</p>
+          <p>Если устройство оказалось неисправным, мы бесплатно заменим его или вернём деньги. Для этого оставьте заявку с темой «Консультация» и приложите описание проблемы — при необходимости мастер заберёт товар на диагностику.</p>
+        </div>
+      </details>
 
-      <aside class="aside-info">
-        <h2>Информация для студентов</h2>
-        <p>
-          На следующих практических занятиях этот проект будет расширяться:
-          появятся формы, модальное окно, дополнительные страницы, Flex/Grid,
-          БЭМ-структура и адаптивная версия сайта.
-        </p>
-      </aside>
+      <details class="faq-item">
+        <summary class="faq-question">Какая гарантия действует на технику?</summary>
+        <div class="faq-answer">
+          <p>На всю технику действует гарантия производителя от 12 месяцев, на отдельные позиции — до 24 месяцев. Срок указан в описании каждого товара. Гарантия покрывает заводские дефекты и не распространяется на механические повреждения, следы воды при отсутствии влагозащиты и самостоятельный ремонт.</p>
+          <p>Гарантийное обслуживание выполняется в авторизованных сервисных центрах, а наша команда берёт на себя связь с ними: вам достаточно оставить заявку, и мы организуем приём устройства.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Что входит в услугу «Настройка умного дома»?</summary>
+        <div class="faq-answer">
+          <p>Мастер приезжает в удобное для вас время и в течение 2–4 часов устанавливает хаб, подключает до 15 устройств (лампы, розетки, датчики движения, протечки и открытия), настраивает сценарии и интегрирует систему с голосовым ассистентом.</p>
+          <p>В конце визита вы получаете краткую инструкцию и обучение: как добавить новое устройство, изменить сценарий и сбросить настройки. После работ действует поддержка 30 дней — отвечаем на вопросы в чате, а ошибки настройки устраняем бесплатно.</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Кто владелец магазина?</summary>
+        <div class="faq-answer">
+          <p>ИП Пенков Максим Эдуардович</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Сколько обрабатывается заказ?</summary>
+        <div class="faq-answer">
+          <p>Заказ обрабатывается в течение трёх рабочих дней, включая день создания заявки (за исключением праздников). Обычно менеджер связывается с вами в первые несколько часов, чтобы подтвердить наличие и согласовать доставку.</p>
+          <p>Если нужной позиции нет в наличии, мы предупредим об этом сразу и предложим аналог или уведомим о поступлении — для этого на карточке товара есть кнопка «Узнать о поступлении».</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary class="faq-question">Как мои данные хранятся и защищаются?</summary>
+        <div class="faq-answer">
+          <p>Мы используем имя, e-mail и телефон только для обработки вашей заявки и связи с вами. Данные не передаются третьим лицам, кроме служб доставки, которым нужны контакты для вручения заказа. Согласие на обработку вы подтверждаете галочкой в форме и можете отозвать его в любой момент, написав на info@example.com.</p>
+          <p>Пока вы заполняете форму, черновик сохраняется только в браузере вашего устройства, чтобы вы не потеряли введённое. После отправки заявки черновик удаляется.</p>
+        </div>
+      </details>
     </section>
   </main>
 
@@ -139,100 +143,5 @@
     <p>&copy; 2026 Учебный проект. Все права защищены.</p>
     <p>Дисциплина: Фронтенд и бэкенд разработка</p>
   </footer>
-  <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
-    <h2 class="order-dialog__title" id="order-dialog-title">Оформление заявки</h2>
-
-
-    <form class="order-form" id="order-form" action="#" method="post" novalidate>
-      <input id="selected-product" name="selected-product" type="hidden">
-
-      <div class="form-field">
-        <label for="order-name">Имя</label>
-        <input
-          class="order-form__input"
-          id="order-name"
-          name="name"
-          type="text"
-          required
-        >
-      </div>
-
-      <div class="order-form__field">
-        <label class="order-form__label" for="order-email">E-mail</label>
-        <input
-          class="order-form__input"
-          id="order-email"
-          name="email"
-          type="email"
-          required
-        >
-      </div>
-
-      <div class="form-field">
-        <label for="order-phone">Телефон</label>
-        <input
-          id="order-phone"
-          name="phone"
-          type="tel"
-          inputmode="tel"
-          placeholder="+7 (900) 000-00-00"
-          pattern="^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$"
-          required
-        >
-        <small>Формат: +7 (900) 000-00-00</small>
-      </div>
-
-      <div class="form-field">
-        <label for="order-date">Дата связи</label>
-        <input
-          id="order-date"
-          name="date"
-          type="date"
-        >
-      </div>
-
-      <div class="form-field">
-        <label for="order-topic">Тема заявки</label>
-        <select id="order-topic" name="topic" required>
-          <option value="">Выберите тему</option>
-          <option value="product">Заказ товара</option>
-          <option value="consultation">Консультация</option>
-          <option value="delivery">Доставка</option>
-        </select>
-      </div>
-
-      <div class="form-field">
-        <label for="order-comment">Комментарий</label>
-        <textarea
-          id="order-comment"
-          name="comment"
-          rows="4"
-          placeholder="Укажите дополнительную информацию"
-        ></textarea>
-      </div>
-
-      <div class="form-field form-field--checkbox">
-        <label>
-          <input
-            id="order-agreement"
-            name="agreement"
-            type="checkbox"
-            required
-          >
-          Я согласен на обработку данных
-        </label>
-      </div>
-
-      <div class="form-actions">
-        <button type="button" id="close-order-dialog">Закрыть</button>
-        <button type="submit">Отправить заявку</button>
-      </div>
-    </form>
-
-  </dialog>
-
-  <p class="success-message" id="success-message" hidden>
-    Форма успешно отправлена!
-  </p>
 </body>
 </html>
